@@ -1,0 +1,21 @@
+import { test , expect } from '@playwright/test';
+test('complete purchase journey', async ({page}) =>{
+    await page.goto('https://www.saucedemo.com/');
+    await page.locator('[data-test = "username"]').fill('standard_user');
+    await page.locator('[data-test = "password"]').fill('secret_sauce');
+    await page.locator('[data-test = "login-button"]').click();
+    await page.locator('[data-test = "add-to-cart-sauce-labs-backpack"]').click();
+    await page.locator('.shopping_cart_link').click();
+    await expect(page.locator('[data-test = "inventory-item-name"]')).toHaveText('Sauce Labs Backpack');
+    await page.screenshot({ path: '01-backpack-in-cart.png', fullPage: true });
+    await page.locator('[data-test = "checkout"]').click();
+    await page.locator('[data-test = "firstName"]').fill('Lalitha');
+    await page.locator('[data-test = "lastName"]').fill('Badugu');
+    await page.locator('[data-test = "postalCode"]').fill('TN4 9QZ');
+    await page.screenshot({ path: '02-details-entered.png', fullPage: true });
+    await page.locator('[data-test = "continue"]').click();
+    await expect(page.getByText('Checkout: Overview')).toBeVisible();
+    await page.locator('[data-test = "finish"]').click();
+    await expect(page.locator('[data-test = "complete-header"]')).toHaveText('Thank you for your order!');
+    await page.screenshot({ path: '03-order-complete.png', fullPage: true });
+});

@@ -1,0 +1,15 @@
+auth-state.json
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+.env
+# Generated test artefacts
+/downloads/
+/screenshots/
+/*.png
+
+

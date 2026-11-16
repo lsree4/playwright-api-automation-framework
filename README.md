@@ -103,3 +103,12 @@ npx playwright show-report
 - npm
 - dotenv
 - JSONPlaceholder REST API
+## Development Workflow
+
+This project follows a structured development approach:
+
+- Create feature branches for new functionality.
+- Develop and validate changes independently.
+- Commit changes with meaningful messages.
+- Push feature branches to GitHub.
+- Merge reviewed changes into the main branch.
